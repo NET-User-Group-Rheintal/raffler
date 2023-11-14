@@ -48,6 +48,7 @@ namespace DefaultNamespace
             try
             {
                 Controller.maxNumber = int.Parse(Input.text);
+                Controller.UsedNumbers.Clear();
             }
             catch (Exception ex)
             {
