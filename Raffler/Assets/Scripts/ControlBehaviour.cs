@@ -21,6 +21,8 @@ public class ControlBehaviour : MonoBehaviour
 
     public Queue<GameObject> ToSpawn = new Queue<GameObject>();
 
+    public HashSet<int> UsedNumbers = new HashSet<int>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,7 +66,7 @@ public class ControlBehaviour : MonoBehaviour
     {
         if (spawnNumberNext)
         {
-            SpawnNumber(Random.Range(1, maxNumber));
+            SpawnNumber();
             spawnNumberNext = false;
         }
         else
@@ -81,9 +83,17 @@ public class ControlBehaviour : MonoBehaviour
         ToSpawn.Enqueue(Instantiate(spawnerPrefabs[spawnIndex]));
     }
 
-    public void SpawnNumber(int number)
+    public void SpawnNumber()
     {
         Debug.Log("Spawning Number");
+        int number;
+        do
+        {
+            number = Random.Range(1, maxNumber);
+        } while (UsedNumbers.Contains(number) && UsedNumbers.Count < maxNumber);
+
+        UsedNumbers.Add(number);
+
         var newInstance = Instantiate(numberPrefab);
         ToSpawn.Enqueue(newInstance);
 
