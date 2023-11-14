@@ -96,7 +96,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.4
+  m_Radius: 1.2
 --- !u!114 &4790049857028170485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,12 +196,12 @@ TextMesh:
   m_GameObject: {fileID: 7472531069995129770}
   m_Text: 22
   m_OffsetZ: -5
-  m_CharacterSize: 1
+  m_CharacterSize: 0.2
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 24
+  m_FontSize: 110
   m_FontStyle: 1
   m_RichText: 0
   m_Font: {fileID: 12800000, guid: 4c9587476cf467e27bb915bce980b553, type: 3}
