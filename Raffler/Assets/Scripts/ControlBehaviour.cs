@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using DefaultNamespace;
 using UnityEditor;
 using UnityEngine;
@@ -14,9 +15,12 @@ public class ControlBehaviour : MonoBehaviour
 
     [Header("Numbers")] public GameObject numberPrefab;
     public int maxNumber = 30;
-
-
     public bool spawnNumberNext = false;
+
+    [Header("Cammeras")] public CinemachineVirtualCamera overViewCam;
+    public CinemachineVirtualCamera detailCam;
+    
+    
     private float nextSpawnTime = 5f;
 
     public Queue<GameObject> ToSpawn = new Queue<GameObject>();
@@ -68,10 +72,12 @@ public class ControlBehaviour : MonoBehaviour
         {
             SpawnNumber();
             spawnNumberNext = false;
+            SwitchToDetail();
         }
         else
         {
             SpawnElement();
+            SwitchToOverview();
         }
     }
 
@@ -81,6 +87,8 @@ public class ControlBehaviour : MonoBehaviour
 
         var spawnIndex = Random.Range(0, spawnerPrefabs.Length);
         ToSpawn.Enqueue(Instantiate(spawnerPrefabs[spawnIndex]));
+        
+        
     }
 
     public void SpawnNumber()
@@ -100,10 +108,22 @@ public class ControlBehaviour : MonoBehaviour
         var numberBehaviour = newInstance.GetComponent<NumberBehaviour>();
         numberBehaviour.Number = number;
         newInstance.name = number.ToString();
+
+        this.detailCam.Follow = newInstance.transform;
     }
 
     private float CalculateNextSpawnTime(float time)
     {
         return time + Random.Range(spawnTimeMin, spawnTimeMax);
+    }
+
+    public void SwitchToOverview()
+    {
+        this.detailCam.Priority = 5;
+    }
+
+    public void SwitchToDetail()
+    {
+        this.detailCam.Priority = 20;
     }
 }
