@@ -1,7 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace DefaultNamespace
 {
@@ -28,6 +28,11 @@ namespace DefaultNamespace
         public void ToggleSettingsPanel()
         {
             ShowSettingsPanel = !ShowSettingsPanel;
+
+            if (!ShowSettingsPanel)
+            {
+                EventSystem.current.SetSelectedGameObject(null);
+            }
         }
 
         private void Update()
