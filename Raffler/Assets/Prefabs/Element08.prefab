@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 3b8e720e9a1663374918a2e189ac1dde, type: 3}
+  m_Sprite: {fileID: 2270024594606943754, guid: 8e315c6049b6e947da0ae97ca3728019, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,11 +97,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8312296413369913275}
   - component: {fileID: 1324057431342580961}
-  - component: {fileID: 6532277954986369115}
-  - component: {fileID: 1269048029315238501}
-  - component: {fileID: 4612577902230116438}
+  - component: {fileID: 2345187756930105391}
+  - component: {fileID: 4481559842905948822}
+  - component: {fileID: 7180342580036376383}
   m_Layer: 0
-  m_Name: Element06
+  m_Name: Element08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,7 +150,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &6532277954986369115
+--- !u!60 &2345187756930105391
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -196,13 +196,17 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.7707104, y: -0.80743015}
-      - {x: 0.9055007, y: 1.0432514}
-      - {x: -0.91563386, y: 1.0266608}
-      - {x: -0.7345352, y: -0.8181642}
-      - {x: 0.009607136, y: -1.0299311}
+    - - {x: 0.004648598, y: 1.1766467}
+      - {x: -0.2723052, y: 0.99398905}
+      - {x: -1.2892139, y: -0.76409066}
+      - {x: -1.2437764, y: -1.0623546}
+      - {x: -0.9963539, y: -1.1639733}
+      - {x: 1.061328, y: -1.1592044}
+      - {x: 1.2946858, y: -0.9829399}
+      - {x: 1.298437, y: -0.7821584}
+      - {x: 0.2734391, y: 1.0073175}
   m_UseDelaunayMesh: 0
---- !u!114 &1269048029315238501
+--- !u!114 &4481559842905948822
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -215,8 +219,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 794973787727229670}
-  audio: {fileID: 4612577902230116438}
---- !u!82 &4612577902230116438
+  audio: {fileID: 7180342580036376383}
+--- !u!82 &7180342580036376383
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

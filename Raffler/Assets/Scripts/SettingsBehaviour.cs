@@ -54,6 +54,8 @@ namespace DefaultNamespace
             {
                 Controller.maxNumber = int.Parse(Input.text);
                 Controller.UsedNumbers.Clear();
+
+                ToggleSettingsPanel();
             }
             catch (Exception ex)
             {

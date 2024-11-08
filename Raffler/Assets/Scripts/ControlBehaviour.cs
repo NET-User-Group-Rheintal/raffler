@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Cinemachine;
 using DefaultNamespace;
+using Unity.Cinemachine;
 using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -14,13 +14,13 @@ public class ControlBehaviour : MonoBehaviour
     public float spawnTimeMax = 5f;
 
     [Header("Numbers")] public GameObject numberPrefab;
-    public int maxNumber = 30;
+    public int maxNumber = 25;
     public bool spawnNumberNext = false;
 
     [Header("Cammeras")] public CinemachineVirtualCamera overViewCam;
     public CinemachineVirtualCamera detailCam;
-    
-    
+
+
     private float nextSpawnTime = 5f;
 
     public Queue<GameObject> ToSpawn = new Queue<GameObject>();
@@ -72,7 +72,8 @@ public class ControlBehaviour : MonoBehaviour
         {
             SpawnNumber();
             spawnNumberNext = false;
-            SwitchToDetail();
+            Invoke(nameof(SwitchToDetail), 2f);
+            nextSpawnTime = CalculateNextSpawnTime(Time.time, 3f);
         }
         else
         {
@@ -86,9 +87,9 @@ public class ControlBehaviour : MonoBehaviour
         Debug.Log("Spawning Element");
 
         var spawnIndex = Random.Range(0, spawnerPrefabs.Length);
-        ToSpawn.Enqueue(Instantiate(spawnerPrefabs[spawnIndex]));
-        
-        
+        var element = Instantiate(spawnerPrefabs[spawnIndex]);
+        element.SetActive(false);
+        ToSpawn.Enqueue(element);
     }
 
     public void SpawnNumber()
@@ -103,6 +104,7 @@ public class ControlBehaviour : MonoBehaviour
         UsedNumbers.Add(number);
 
         var newInstance = Instantiate(numberPrefab);
+        newInstance.SetActive(false);
         ToSpawn.Enqueue(newInstance);
 
         var numberBehaviour = newInstance.GetComponent<NumberBehaviour>();
@@ -112,9 +114,9 @@ public class ControlBehaviour : MonoBehaviour
         this.detailCam.Follow = newInstance.transform;
     }
 
-    private float CalculateNextSpawnTime(float time)
+    private float CalculateNextSpawnTime(float time, float addedDelay = 0f)
     {
-        return time + Random.Range(spawnTimeMin, spawnTimeMax);
+        return time + addedDelay + Random.Range(spawnTimeMin, spawnTimeMax);
     }
 
     public void SwitchToOverview()
